@@ -1,0 +1,11 @@
+services:
+  condo-app:
+    build: .
+    container_name: condo-geo-app
+    ports:
+      - "8501:8501"
+    environment:
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY:-}
+    volumes:
+      - ./:/app
+    command: streamlit run condo_viewer_app.py --server.address=0.0.0.0 --server.port=8501
